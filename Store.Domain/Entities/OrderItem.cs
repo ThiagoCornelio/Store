@@ -1,3 +1,5 @@
+using Store.Domain.Entities.Contracts;
+
 namespace Store.Domain.Entities
 {
     public class OrderItem : Entity
@@ -7,6 +9,8 @@ namespace Store.Domain.Entities
             Product = product;
             Price = Product != null ? product.Price : 0;
             Quantity = quantity;
+
+            AddNotifications(new CreateOrderItemContract(this));
         }
 
         public Product Product { get; private set; }

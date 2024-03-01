@@ -1,3 +1,5 @@
+using Flunt.Validations;
+using Store.Domain.Entities.Contracts;
 using Store.Domain.Enums;
 
 namespace Store.Domain.Entities
@@ -6,12 +8,14 @@ namespace Store.Domain.Entities
     {
         public Order(Customer customer, decimal deliveryFee, Discount discount)
         {
-            // AddNotifications(
-            //     new Contract()
-            //         .Requires()
-            //         .IsNotNull(customer, "Customer", "Cliente inválido")
-            // );
+            //AddNotifications(
+            //    new Contract()
+            //        .Requires()
+            //        .IsNotNull(customer, "Customer", "Cliente inválido")
+            //);
+            AddNotifications(new CreateOrderContract(this));
 
+            //Lembrando que o Flunt implementa o DomainNotification
             Customer = customer;
             // Status = EOrderStatus.WaitingPayment;
             DeliveryFee = deliveryFee;
@@ -29,8 +33,9 @@ namespace Store.Domain.Entities
         public void AddItem(Product product, int quantity)
         {
             var item = new OrderItem(product, quantity);
-            // if (item.Valid)
-            Items.Add(item);
+
+            if (item.IsValid)
+                Items.Add(item);
         }
 
         public decimal Total()

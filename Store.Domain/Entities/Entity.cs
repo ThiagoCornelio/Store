@@ -1,6 +1,8 @@
+using Flunt.Notifications;
+
 namespace Store.Domain.Entities
 {
-    public class Entity // : IComparable
+    public class Entity : Notifiable<Notification>// : IComparable 
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
