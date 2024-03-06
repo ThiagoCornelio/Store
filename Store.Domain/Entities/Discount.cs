@@ -13,7 +13,7 @@ namespace Store.Domain.Entities
        
         public decimal Value()
         {
-            if (IsValid())
+            if (IsValid)
                 return Amount;
                 
             return 0;

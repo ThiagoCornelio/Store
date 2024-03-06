@@ -1,21 +1,14 @@
 ﻿using Flunt.Validations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Domain.ValueObjects.Contracts
 {
-    public class CreateNameContract
+    public class CreateNameContract : Contract<Name>
     {
-        public class CreateEmailContract : Contract<Name>
+        public CreateNameContract(Name name)
         {
-            public CreateEmailContract(Name name)
-            {
-                Requires()
-                    .IsEmail(name.Name, "Email");
-            }
+            Requires()
+                .AreEquals(name.FirstName, name.FirstName.Length < 2 || name.FirstName.Length > 30, "Name.FirstName", "Nome deve conter 3 a 40 caracteres")
+                .AreEquals(name.LastName, name.LastName.Length < 2 || name.LastName.Length > 30, "Name.LastName", "Sobrenome deve conter 3 a 40 caracteres");
         }
     }
 }

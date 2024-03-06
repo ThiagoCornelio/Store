@@ -7,12 +7,7 @@ namespace Store.Domain.Entities.Contracts
         public CreateDiscountContract(Discount discount)
         {
             Requires()
-                .
-
-                 //public bool IsValid()
-                 //{
-                 //    return DateTime.Compare(DateTime.Now, ExpireDate) < 0;
-                 //}
+                .IsGreaterThan(discount.ExpireDate, DateTime.Now, "Discount.ExpireDate", "Desconto expirado");
         }
     }
 }
