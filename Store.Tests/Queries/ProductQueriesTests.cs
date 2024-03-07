@@ -10,12 +10,14 @@ namespace Store.Tests.Queries
 
         public ProductQueriesTests()
         {
-            _products = new List<Product>();
-            _products.Add(new Product("Produto 01", 10, true));
-            _products.Add(new Product("Produto 02", 20, true));
-            _products.Add(new Product("Produto 03", 30, true));
-            _products.Add(new Product("Produto 04", 40, false));
-            _products.Add(new Product("Produto 05", 50, false));
+            _products = new List<Product>
+            {
+                new Product("Produto 01", 10, true),
+                new Product("Produto 02", 20, true),
+                new Product("Produto 03", 30, true),
+                new Product("Produto 04", 40, false),
+                new Product("Produto 05", 50, false)
+            };
         }
 
         [TestMethod]
