@@ -17,9 +17,9 @@ namespace Store.Domain.Entities
 
             //Lembrando que o Flunt implementa o DomainNotification
             Customer = customer;
-            // Status = EOrderStatus.WaitingPayment;
             DeliveryFee = deliveryFee;
             Discount = discount;
+            Status = EOrderStatus.WaitingPayment;
         }
 
         public Customer Customer { get; private set; }

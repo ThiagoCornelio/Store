@@ -9,7 +9,7 @@ namespace Store.Domain.Entities.Contracts
             Requires()
                 .IsNotNull(Order.Customer, "Customer", "Cliente inválido")
                 .IsNotNullOrEmpty(Order.Number, "Number", "Número do Pedido invalido")
-                .IsNotNull(Order.Items, "Items", "Nenhum pedido inserido.");
+                .IsLowerOrEqualsThan(Order.Items, 0, "Items", "Nenhum pedido inserido.");
         }
     }
 }

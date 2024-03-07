@@ -1,3 +1,5 @@
+using Store.Domain.Entities.Contracts;
+
 namespace Store.Domain.Entities
 {
     public class Discount : Entity
@@ -6,6 +8,8 @@ namespace Store.Domain.Entities
         {
             Amount = amount;
             ExpireDate = expireDate;
+
+            AddNotifications(new CreateDiscountContract(this));
         }
 
         public decimal Amount { get; private set; }
